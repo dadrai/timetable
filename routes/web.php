@@ -17,23 +17,30 @@ use Illuminate\Support\Facades\Route;
     return view('welcome');
  })->name('');
 
-Route::get('/group', function () {
-    return view('group');
-})->name('gr');
+Route::get('/group', 'GroupTimetableController@index')->name('gr');
 
-Route::get('/prepod',function (){
-    return view('prepod');
+Route::get('/group/{n_gr}', 'GroupTimetableController@show')
+    ->name('show');
 
-})->name('pr');
+Route::get('/group/{n_gr}/{week}', 'GroupTimetableController@pred_week')
+    ->name('pred_week');
 
-Route::get('/prepod/raspisanie',function (){
-    return view('rasp_prepod');
 
-})->name('rasp_pr');
 
-Route::get('/aydit',function (){
-    return view('aydit');
-})->name('ay');
+Route::get('/prepod','PrepodController@index')->name('pr');
+
+Route::get('/prepod/{fio}', 'PrepodController@show')
+    ->name('pr_show');
+
+Route::get('/prepod/raspisanie/{fio}', 'RaspisaniePrepodController@show')
+    ->name('rasp_pr');
+
+
+Route::get('/aydit', 'AuditTimetableController@index')->name('ay');
+
+Route::get('/aydit/{n_ay}', 'AuditTimetableController@show')
+    ->name('ay_show');
+
 
 Route::get('/kontakts',function (){
     return view('kont');
@@ -42,4 +49,7 @@ Route::get('/kontakts',function (){
 Route::get('/vhod',function (){
     return view('vhod');
 })->name('vhod');
+
+//Route::get('/t', 'TimetableController@index')->name('ttt');
+//Route::get('/t/{n_gr}', 'TimetableController@show')->name('show');
 

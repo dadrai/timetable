@@ -1,55 +1,54 @@
 @extends('shablontimetable')
 
-@section('a2')
-    class="active"
-@endsection
-
 @section('select1')
-   <div class="form-group">
+    <div class="form-group">
 
-    <select class="form-control" id ="prepodselect" onchange="window.location.href = this.options[this.selectedIndex].value">
-        <option value="">Выберите преподавателя:</option>
-        @foreach($sh_pr as $sh_pr)
+    <select class="form-control" id ="groupselect" onchange="window.location.href = this.options[this.selectedIndex].value">
+        <option value="">Выберите группу:</option>
+       @foreach($groups as $groups)
 
-            <option value="{{route('rasp_pr',  $sh_pr->Преподаватель )}}">{{$sh_pr->Преподаватель}}</option>
+           <option value="{{route('show',$groups->Группа )}}">{{$groups->Группа}}</option>
         @endforeach
     </select>
     </div>
+
+{{-- {{$data }} {{ $week}}--}}
+
 @endsection
 
 @section('raspisanie')
     <div  id = "Pon"  class="tabcontent">
-        <table class="table">
-            <thead>
-            <tr>
-                <th style="width: 10% ;text-align: center" scope="col">Время</th>
-                <th style= "text-align: center" scope="col">Предмет</th>
+    <table class="table">
+        <thead>
+        <tr>
+            <th style="width: 10% ;text-align: center" scope="col">Время</th>
+            <th style= "text-align: center" scope="col">Предмет</th>
 
 
-            </tr>
-            </thead>
-            @foreach($pon as $time)
+        </tr>
+        </thead>
+  @foreach($pon as $time)
 
 
-                <tbody>
+         <tbody>
 
-                <tr>
-                    <th scope="row"> <p>{{$time->ВремяС}} - {{$time->ВремяПо}}</p>
+         <tr>
+             <th scope="row"> <p>{{$time->ВремяС}} - {{$time->ВремяПо}}</p>
 
-                    </th>
+             </th>
 
-                    <td>
-                        <p>Гр. {{$time->Группа}}</p>
-                        <p>{{$time->Преподаватель}}</p>
-                        <p>{{$time->Дисциплина}}</p>
-                        <p>{{$time->Аудитория}}</p>
-                    </td>
-                </tr>
+             <td>
+                 <p>Гр. {{$time->Группа}}</p>
+                 <p>{{$time->Преподаватель}}</p>
+                 <p>{{$time->Дисциплина}}</p>
+                 <p>{{$time->Аудитория}}</p>
+             </td>
+         </tr>
 
-                </tbody>
+         </tbody>
 
-            @endforeach
-        </table>
+   @endforeach
+     </table>
     </div>
 
 
@@ -240,11 +239,6 @@
         <button class="tablinks" onclick="openDen(event, 'Cht')"><h3>Четверг</h3></button>
         <button class="tablinks" onclick="openDen(event, 'Pt')"><h3>Пятница</h3></button>
         <button class="tablinks" onclick="openDen(event, 'Sb')"><h3>Суббота</h3></button>
-
-        <button style=" float: right" disabled>Неделя №: {{$week}}</button>
-        <button style="float: right; width: 5%" ><h3>></h3> </button>
-        <button style=" float: right; width: 5%" href="{{route('show',$week)}}" method="timetable"><h3><</h3></button>
-
     </div>
 
     @yield('raspisanie')

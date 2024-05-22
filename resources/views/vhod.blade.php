@@ -10,7 +10,7 @@
 @endsection
 
 @section('table')
-    <div style="padding: 0px 200px;" class="container mt-3">
+    <div style="padding: 0px 200px; background-color: white " class="container mt-3">
 
 
 

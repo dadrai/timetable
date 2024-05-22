@@ -5,324 +5,249 @@
 @endsection
 
 @section('select1')
-    <input list="ShowDataList" class="form-control" placeholder="Выберите аудиторию:">
+    <div class="form-group">
 
-    <datalist id="ShowDataList">
-        <option value=1-4/10>
-        <option value=1-3/4>
-        <option value=104>
-        <option value=211>
-    </datalist>
+        <select class="form-control" id ="auditselect" onchange="window.location.href = this.options[this.selectedIndex].value">
+            <option value="">Выберите аудиторию:</option>
+            @foreach($audits as $audits)
+
+                <option value="{{route('ay_show',$audits->Аудитория )}}">{{$audits->Аудитория}}</option>
+            @endforeach
+        </select>
+    </div>
 @endsection
 
 @section('raspisanie')
     <div  id = "Pon"  class="tabcontent">
+        <table class="table">
+            <thead>
+            <tr>
+                <th style="width: 10% ;text-align: center" scope="col">Время</th>
+                <th style= "text-align: center" scope="col">Предмет</th>
 
-        <table class="table table-bordered table-striped">
+
+            </tr>
+            </thead>
+            @foreach($pon as $time)
+
+
+                <tbody>
+
+                <tr>
+                    <th scope="row"> <p>{{$time->ВремяС}} - {{$time->ВремяПо}}</p>
+
+                    </th>
+
+                    <td>
+                        <p>Гр. {{$time->Группа}}</p>
+                        <p>{{$time->Преподаватель}}</p>
+                        <p>{{$time->Дисциплина}}</p>
+                        <p>{{$time->Аудитория}}</p>
+                    </td>
+                </tr>
+
+                </tbody>
+
+            @endforeach
+        </table>
+    </div>
+
+
+    <div  id = "Vt"  class="tabcontent">
+        <table class="table">
             <thead>
             <tr>
                 <th style="width: 10%" scope="col">Время</th>
                 <th style= "text-align: center" scope="col">Предмет</th>
 
+
             </tr>
             </thead>
-            <tbody>
+            @foreach($vt as $time)
 
-            <tr>
-                <th scope="row">8:30 - 10:05</th>
 
-                <td>
-                    <p>гр 492</p>
-                    <p>Котов Б.А.</p>
-                    <p>Физика</p> </td>
-            </tr>
-            <tr>
-                <th scope="row">10:20 - 11:55</th>
-                <td>
+                <tbody>
 
-                    <p>гр 491</p>
-                    <p>Руднов К.А.</p>
-                    <p>Физическая культура</p>
-                </td>
+                <tr>
+                    <th scope="row"> <p>{{$time->ВремяС}} - {{$time->ВремяПо}}</p>
 
-            </tr>
-            <tr>
-                <th scope="row">12:25 - 14:00</th>
-                <td>
-                    <p>гр 492</p>
-                    <p>Иванов А.Д.</p>
-                    <p>Физика</p></td>
+                    </th>
 
-            </tr>
-            <tr>
-                <th scope="row">14:15 - 15:50</th>
-                <td> </td>
+                    <td>
+                        <p>Гр. {{$time->Группа}}</p>
+                        <p>{{$time->Преподаватель}}</p>
+                        <p>{{$time->Дисциплина}}</p>
+                        <p>{{$time->Аудитория}}</p>
+                    </td>
+                </tr>
 
-            </tr>
-            <tr>
-                <th scope="row">16:05 - 17:40</th>
-                <td> </td>
+                </tbody>
 
-            </tr>
-            </tbody>
-    </div>
-
-    </table>
-
+            @endforeach
+        </table>
     </div>
 
 
-    <div id="Vt" class="tabcontent">
-
-        <table class="table table-bordered table-striped">
+    <div  id = "Sr"  class="tabcontent">
+        <table class="table">
             <thead>
             <tr>
                 <th style="width: 10%" scope="col">Время</th>
                 <th style= "text-align: center" scope="col">Предмет</th>
 
+
             </tr>
             </thead>
-            <tbody>
-            <tr>
-                <th scope="row">8:30 - 10:05</th>
-                <td>
-                    <p>гр 493</p>
-                    <p>Петров Д.Б.</p>
-                    <p>Информатика</p>
-                </td>
+            @foreach($sr as $time)
 
 
-            </tr>
-            <tr>
-                <th scope="row">10:20 - 11:55</th>
-                <td>
+                <tbody>
 
-                    <p>гр 381</p>
-                    <p>Коломатов О.Д.</p>
-                    <p>Информационные системы</p>
-                </td>
+                <tr>
+                    <th scope="row"> <p>{{$time->ВремяС}} - {{$time->ВремяПо}}</p>
 
-            </tr>
-            <tr>
-                <th scope="row">12:25 - 14:00</th>
-                <td>
-                    <p>гр 491</p>
-                    <p>Иванов А.Д.</p>
-                    <p>Программирование</p></td>
+                    </th>
 
-            </tr>
-            <tr>
-                <th scope="row">14:15 - 15:50</th>
-                <td> </td>
+                    <td>
+                        <p>Гр. {{$time->Группа}}</p>
+                        <p>{{$time->Преподаватель}}</p>
+                        <p>{{$time->Дисциплина}}</p>
+                        <p>{{$time->Аудитория}}</p>
+                    </td>
+                </tr>
 
-            </tr>
-            <tr>
-                <th scope="row">16:05 - 17:40</th>
-                <td> </td>
+                </tbody>
 
-            </tr>
-
-            </tbody>
+            @endforeach
+        </table>
     </div>
 
-    </table>
 
-    </div>
-
-    <div id="Sr" class="tabcontent">
-
-        <table class="table table-bordered table-striped">
+    <div  id = "Cht"  class="tabcontent">
+        <table class="table">
             <thead>
             <tr>
                 <th style="width: 10%" scope="col">Время</th>
                 <th style= "text-align: center" scope="col">Предмет</th>
 
+
             </tr>
             </thead>
-            <tbody>
+            @foreach($cht as $time)
 
-            <tr>
-                <th scope="row">8:30 - 10:05</th>
-                <td> </td>
-            </tr>
-            <tr>
-                <th scope="row">10:20 - 11:55</th>
-                <td>
-                </td>
 
-            </tr>
-            <tr>
-                <th scope="row">12:25 - 14:00</th>
-                <td> </td>
+                <tbody>
 
-            </tr>
-            <tr>
-                <th scope="row">14:15 - 15:50</th>
-                <td> </td>
+                <tr>
+                    <th scope="row"> <p>{{$time->ВремяС}} - {{$time->ВремяПо}}</p>
 
-            </tr>
-            <tr>
-                <th scope="row">16:05 - 17:40</th>
-                <td> </td>
+                    </th>
 
-            </tr>
-            </tbody>
+                    <td>
+                        <p>Гр. {{$time->Группа}}</p>
+                        <p>{{$time->Преподаватель}}</p>
+                        <p>{{$time->Дисциплина}}</p>
+                        <p>{{$time->Аудитория}}</p>
+                    </td>
+                </tr>
+
+                </tbody>
+
+            @endforeach
+        </table>
     </div>
 
-    </table>
 
-    </div>
-
-    <div id="Cht" class="tabcontent">
-
-        <table class="table table-bordered table-striped">
+    <div  id = "Pt"  class="tabcontent">
+        <table class="table">
             <thead>
             <tr>
                 <th style="width: 10%" scope="col">Время</th>
                 <th style= "text-align: center" scope="col">Предмет</th>
 
+
             </tr>
             </thead>
-            <tbody>
+            @foreach($pt as $time)
 
-            <tr>
-                <th scope="row">8:30 - 10:05</th>
-                <td> </td>
-            </tr>
-            <tr>
-                <th scope="row">10:20 - 11:55</th>
-                <td>
-                </td>
 
-            </tr>
-            <tr>
-                <th scope="row">12:25 - 14:00</th>
-                <td> </td>
+                <tbody>
 
-            </tr>
-            <tr>
-                <th scope="row">14:15 - 15:50</th>
-                <td> </td>
+                <tr>
+                    <th scope="row"> <p>{{$time->ВремяС}} - {{$time->ВремяПо}}</p>
 
-            </tr>
-            <tr>
-                <th scope="row">16:05 - 17:40</th>
-                <td> </td>
+                    </th>
 
-            </tr>
-            </tbody>
+                    <td>
+                        <p>Гр. {{$time->Группа}}</p>
+                        <p>{{$time->Преподаватель}}</p>
+                        <p>{{$time->Дисциплина}}</p>
+                        <p>{{$time->Аудитория}}</p>
+                    </td>
+                </tr>
+
+                </tbody>
+
+            @endforeach
+        </table>
     </div>
 
-    </table>
 
-    </div>
-
-    <div id="Pt" class="tabcontent">
-
-        <table class="table table-bordered table-striped">
+    <div  id = "Sb"  class="tabcontent">
+        <table class="table">
             <thead>
             <tr>
                 <th style="width: 10%" scope="col">Время</th>
                 <th style= "text-align: center" scope="col">Предмет</th>
 
-            </tr>
-            </thead>
-            <tbody>
-
-            <tr>
-                <th scope="row">8:30 - 10:05</th>
-                <td> </td>
-            </tr>
-            <tr>
-                <th scope="row">10:20 - 11:55</th>
-                <td>
-                </td>
-
-            </tr>
-            <tr>
-                <th scope="row">12:25 - 14:00</th>
-                <td> </td>
-
-            </tr>
-            <tr>
-                <th scope="row">14:15 - 15:50</th>
-                <td> </td>
-
-            </tr>
-            <tr>
-                <th scope="row">16:05 - 17:40</th>
-                <td> </td>
-
-            </tr>
-            </tbody>
-    </div>
-
-    </table>
-
-    </div>
-
-    <div id="Sb" class="tabcontent">
-        <table class="table table-bordered table-striped">
-            <thead>
-            <tr>
-                <th style="width: 10%" scope="col">Время</th>
-                <th style= "text-align: center" scope="col">Предмет</th>
 
             </tr>
             </thead>
-            <tbody>
+            @foreach($sb as $time)
 
-            <tr>
-                <th scope="row">8:30 - 10:05</th>
-                <td> </td>
-            </tr>
-            <tr>
-                <th scope="row">10:20 - 11:55</th>
-                <td>
-                </td>
 
-            </tr>
-            <tr>
-                <th scope="row">12:25 - 14:00</th>
-                <td> </td>
+                <tbody>
 
-            </tr>
-            <tr>
-                <th scope="row">14:15 - 15:50</th>
-                <td> </td>
+                <tr>
+                    <th scope="row"> <p>{{$time->ВремяС}} - {{$time->ВремяПо}}</p>
 
-            </tr>
-            <tr>
-                <th scope="row">16:05 - 17:40</th>
-                <td> </td>
+                    </th>
 
-            </tr>
-            </tbody>
+                    <td>
+                        <p>Гр. {{$time->Группа}}</p>
+                        <p>{{$time->Преподаватель}}</p>
+                        <p>{{$time->Дисциплина}}</p>
+                        <p>{{$time->Аудитория}}</p>
+                    </td>
+                </tr>
+
+                </tbody>
+
+            @endforeach
+        </table>
     </div>
 
-    </table>
-    </div>
+
 @endsection
-
 @section('table')
 
-        <div class="tab">
+    <div class="tab">
 
 
-            <button class="tablinks" onclick="openDen(event, 'Pon')"><h3>Понедельник</h3></button>
-            <button class="tablinks" onclick="openDen(event, 'Vt')"><h3>Вторник</h3></button>
-            <button class="tablinks" onclick="openDen(event, 'Sr')"><h3>Среда</h3></button>
-            <button class="tablinks" onclick="openDen(event, 'Cht')"><h3>Четверг</h3></button>
-            <button class="tablinks" onclick="openDen(event, 'Pt')"><h3>Пятница</h3></button>
-            <button class="tablinks" onclick="openDen(event, 'Sb')"><h3>Суббота</h3></button>
-        </div>
+        <button class="tablinks" onclick="openDen(event, 'Pon')"><h3>Понедельник</h3></button>
+        <button class="tablinks" onclick="openDen(event, 'Vt')"><h3>Вторник</h3></button>
+        <button class="tablinks" onclick="openDen(event, 'Sr')"><h3>Среда</h3></button>
+        <button class="tablinks" onclick="openDen(event, 'Cht')"><h3>Четверг</h3></button>
+        <button class="tablinks" onclick="openDen(event, 'Pt')"><h3>Пятница</h3></button>
+        <button class="tablinks" onclick="openDen(event, 'Sb')"><h3>Суббота</h3></button>
 
-        @yield('raspisanie')
+        <button style=" float: right" disabled>Неделя №: {{$week}}</button>
+        <button style="float: right; width: 5%" ><h3>></h3> </button>
+        <button style=" float: right; width: 5%" href="{{route('show',$week)}}" method="timetable"><h3><</h3></button>
 
+    </div>
 
-
-
-
+    @yield('raspisanie')
 
     <script>
         function openDen(evt, cityName) {

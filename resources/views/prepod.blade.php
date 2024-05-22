@@ -51,51 +51,34 @@
 </style>
 
 @section('select1')
-    <input list="ShowDataList" class="form-control" placeholder="Выберите преподавателя:">
+    <div class="form-group">
 
-    <datalist id="ShowDataList">
-        <option value="Азимов К.Н.">
-        <option value="Громов Н.П.">
-        <option value="Иванов В.А.">
-        <option value="Ушаков Р.В.">
+        <select class="form-control" id ="prepodselect" onchange="window.location.href = this.options[this.selectedIndex].value">
+            <option value="">Выберите преподавателя:</option>
+            @foreach($sh_pr as $sh_pr)
 
-    </datalist>
+                <option value="{{route('pr_show', $sh_pr->Преподаватель)}}">{{$sh_pr->Преподаватель}}</option>
+            @endforeach
+        </select>
+    </div>
 @endsection
 
 @section('table')
 
         <div class="card2">
+
+            @foreach($prepods as $prepods)
             <div   class="cardpr">
-                <img src="https://cdn1.iconfinder.com/data/icons/professional-avatar-7/140/man__avatar__employee__businessman__professional-512.png" alt="Мария" style="width:100%">
-                <h3>Иванова Мария Сергеевна</h3>
+                <img src="https://us.123rf.com/450wm/feelisgood/feelisgood1709/feelisgood170900745/85757402-flat-user-icon-member-sign-avatar-button-quick-and-easy-recolorable-shape-isolated-from-background-v.jpg?ver=6"
+                     alt="Преподаватель" style="width:100%">
+                <h3>{{$prepods->Фамилия}} {{$prepods->Имя}} {{$prepods->Отчество}}</h3>
                 <p class="title">Email: qwerty@mail.ru</p>
                 <p>Тел.: 8-991-123-43-23</p>
-                <form action="prepod/raspisanie">
+                <form action="{{route('rasp_pr', $prepods->Преподаватель)}}">
                 <p><button>Показать Расписание</button></p>
                 </form>
             </div>
-
-            <div class="cardpr">
-                <img src="https://i.pinimg.com/474x/e8/3c/dc/e83cdc8c031912a22ff15a038b2fd374.jpg" alt="Игорь" style="width:100%">
-                <h3>Куертов Игорь Денисович</h3>
-                <p class="title">Email: igory@mail.ru</p>
-                <p>Тел.: 8-911-323-12-21</p>
-                <form action="prepod/raspisanie">
-                    <p><button>Показать Расписание</button></p>
-                </form>
-            </div>
-
-            <div class="cardpr">
-                <img src="https://png.pngtree.com/element_our/png/20181124/businessman-vector-icon-png_246587.jpg" alt="Кирилл" style="width:100%">
-                <h3>Родиков Кирилл Иванович</h3>
-                <p class="title">Email: kirill@mail.ru</p>
-                <p>Тел.: 8-945-123-55-26</p>
-                <form action="prepod/raspisanie">
-                    <p><button>Показать Расписание</button></p>
-                </form>
-            </div>
-
-
+            @endforeach
 
         </div>
 

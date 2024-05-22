@@ -6,12 +6,19 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"  type="text/javascript"></script>
+
+
+
+<link href='fcln/lib/main.css' rel='stylesheet' />
+<script src='fcln/lib/main.js'></script>
+
 
 <style>
 
 
     body {
-        font-family: Arial;
+        font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
         padding: 0px;
         background:white;
     }
@@ -75,11 +82,11 @@
     /* Style the buttons inside the tab */
     .tab button {
         background-color: inherit;
-        float: center;
+
         border: none;
         outline: none;
         cursor: pointer;
-        padding: 14px 16px;
+        padding: 20px 14px;
         transition: 0.3s;
         font-size: 17px;
     }
@@ -96,6 +103,16 @@
         color: white;
     }
 
+    .tab button:disabled{
+        padding: 25px 15px;
+        background-color: white;
+        color: black;
+    }
+  .tab button:disabled:hover{
+      background-color: white;
+      color: black;
+  }
+
     /* Style the tab content */
     .tabcontent {
         display: none;
@@ -104,9 +121,39 @@
         border-top: none;
     }
 
-    .table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {
-        background-color: #ebecf5;
+    /* TABLE */
+
+    table {
+        border-spacing: 0 10px;
+        font-family: 'Open Sans', sans-serif;
+        font-weight: bold;
     }
+
+    th {
+
+        vertical-align: middle;
+
+        text-align: center;
+        border-top: 2px solid #56433D;
+        border-bottom: 2px solid #56433D;
+        border-right: 2px solid #56433D;
+        border-left: 2px solid #56433D;
+    }
+    td {
+        vertical-align: middle;
+        padding: 10px;
+
+        text-align: left;
+        border-top: 2px solid #56433D;
+        border-bottom: 2px solid #56433D;
+        border-right: 2px solid #56433D;
+    }
+    tr{
+        width: 10% ;text-align: center;
+    }
+
+
+    /* TABLE */
 
     .column {
         float: left;
@@ -115,11 +162,11 @@
     }
 
     .left {
-        width: 40%;
+        width: 45%;
     }
 
     .right {
-        width: 60%;
+        width: 55%;
     }
 
     /* Clear floats after the columns */
@@ -157,6 +204,12 @@
         border-radius: 5px;
         background-color: #f2f2f2;
         padding: 10px;
+    }
+
+
+    #calendar {
+        max-width: 700px;
+        margin: 0 auto;
     }
 
 

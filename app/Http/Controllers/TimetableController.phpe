@@ -1,0 +1,53 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Timetable;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Foundation\Bus\DispatchesJobs;
+use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Routing\Controller as BaseController;
+use Illuminate\Support\Facades\DB;
+
+class TimetableController extends Controller
+{
+    public function index(){
+
+
+    }
+    public function show($gr_n){
+        $today = date('Y-m-j 00:00:00');
+
+        $week = date('W') +18;
+
+//        $timetable = Timetable::all()
+//            ->where('ТипНедели', '=',$week)
+//            ->where('Группа', '=',$gr_n);
+
+        $pon = Timetable::all() ->where('ТипНедели', '=',$week)
+            ->where('ДеньНедели','=', 1)
+            ->where('Группа', '=',$gr_n);
+
+        $vt = Timetable::all() ->where('ТипНедели', '=',$week)
+            ->where('ДеньНедели','=', 2)
+            ->where('Группа', '=',$gr_n);
+        $sr = Timetable::all() ->where('ТипНедели', '=',$week)
+            ->where('ДеньНедели','=', 3)
+            ->where('Группа', '=',$gr_n);
+        $cht = Timetable::all() ->where('ТипНедели', '=',$week)
+            ->where('ДеньНедели','=', 4)
+            ->where('Группа', '=',$gr_n);
+        $pt = Timetable::all()->where('ТипНедели', '=',$week)
+            ->where('ДеньНедели','=', 5)
+            ->where('Группа', '=',$gr_n);
+        $sb = Timetable::all() ->where('ТипНедели', '=',$week)
+            ->where('ДеньНедели','=', 6)
+            ->where('Группа', '=',$gr_n);
+
+        $groups = DB::table('tgputimetable')->select('Группа')->distinct()->orderBy('Группа', 'asc')->get();
+
+        return view( 'ttt',[ 'groups'=>$groups, 'data'=>$today, 'week'=>$week,
+        'pon'=>$pon, 'vt'=>$vt, "sr"=>$sr, "cht"=>$cht,"pt"=>$pt,"sb"=>$sb ]);
+    }
+
+}
